@@ -1,0 +1,3 @@
+METHOD_GET = "GET"
+METHOD_HEAD = "HEAD"
+CRLF = "\r\n"
