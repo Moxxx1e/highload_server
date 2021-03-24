@@ -11,11 +11,11 @@ headers = {
 }
 
 
-def build_headers(code: int):
+def build_headers(code: int) -> str:
     response = str.format("{} {} {}\r\n", protocol, code, response_msg_dict[code])
     for key in headers:
         if key == "Date":
-            headers[key] = datetime.datetime.now().__str__()
+            headers[key] = datetime.datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT')
         response += str.format(header_template, key, headers[key])
     return response
 
@@ -25,7 +25,7 @@ def build_bad_client_response(code: int) -> bytes:
     return response.encode()
 
 
-def build_ok_response(code: int, content_type: str, content_length: int):
+def build_ok_response(code: int, content_type: str, content_length: int) -> bytes:
     response = build_headers(code)
     response += str.format(header_template, 'Content-Type', content_type)
     response += str.format(header_template, 'Content-Length', content_length)

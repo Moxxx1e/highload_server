@@ -1,4 +1,4 @@
-def read_config(filename: str):
+def read_config(filename: str) -> (int, str):
     cpu_limit = 4
     document_root = "/var/www/html"
     with open(filename, "r") as config_file:
